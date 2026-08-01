@@ -26,9 +26,15 @@ export class UsersService {
   }
 
   async findByEmail(email: string) {
-    return await this.userRepository.findOne({
+    return this.userRepository.findOne({
       where: { email },
-      select: { password: false },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        password: true,
+        role: true,
+      },
     });
   }
 
